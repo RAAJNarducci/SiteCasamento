@@ -1,0 +1,39 @@
+<body>
+  <div class="div-principal">
+    <div class="col-md-12 ">
+      <h3 class="text-black">Obrigado por nos presentear!</h3>
+      <h4 class="text-black">Preencha seu nome abaixo e se desejar deixe uma mensagem!</h4>
+    </div>
+    <div class="row col-sm-12 text-white div-final">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+              <form *ngIf="showForm" [formGroup]="confirmGiftForm" (ngSubmit)="onSubmit()">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" id="_inputName"
+                        placeholder="Nome">
+                      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                        <div *ngIf="f.name.errors.required">Campo Obrigatório!</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="form-group">
+                        <textarea style="width:" formControlName="message"></textarea>
+                      </div>
+                    </div>
+                  <div class="col-md-12 div-botoes">
+                    <button type="submit" class="btn btn-success btn-lg">Enviar</button>&nbsp;
+                  </div>
+                </form>
+                <div *ngIf="!showForm" class="col-md-12">
+                    <h3>Obrigado pela confirmação!</h3>
+                    <h5>Aproveite e confira nossa <a [routerLink]="['/']">lista de presentes</a></h5>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

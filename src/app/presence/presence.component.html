@@ -1,0 +1,52 @@
+<body>
+  <div class="div-principal">
+    <div class="d-flex justify-content-center col-md-12">
+      <h1 class="lbl-titulo">Será uma Honra Recebê-los!</h1>
+    </div>
+  </div>
+  <br>
+  <div class="d-flex justify-content-center">
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <form *ngIf="showForm" [formGroup]="presenceForm" (ngSubmit)="onSubmit()">
+            <div class="col-md-12">
+              <div class="form-group">
+                <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" id="_inputName"
+                  placeholder="Nome (Igual está em seu convite)">
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                  <div *ngIf="f.name.errors.required">Campo Obrigatório!</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <input type="text" formControlName="adults" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.adults.errors }"
+                  id="_inputAdults" placeholder="Quantidade Adultos">
+                <div *ngIf="submitted && f.adults.errors" class="invalid-feedback">
+                  <div *ngIf="f.adults.errors.required">Campo Obrigatório!</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <input type="text" formControlName="children" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.children.errors }"
+                  id="_inputChildren" placeholder="Quantidade Crianças (0 à 3 anos)">
+                <div *ngIf="submitted && f.children.errors" class="invalid-feedback">
+                  <div *ngIf="f.children.errors.required">Campo Obrigatório!</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 div-botoes">
+              <button type="submit" class="btn btn-success btn-lg">Eu vou!</button>&nbsp;
+              <button style="text-align:right" type="submit" class="btn btn-danger btn-lg">Não vai dar!</button>
+            </div>
+          </form>
+          <div *ngIf="!showForm" class="col-md-12">
+              <h3>Obrigado pela confirmação!</h3>
+              <h5>Aproveite e confira nossa <a [routerLink]="['/']">lista de presentes</a></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
